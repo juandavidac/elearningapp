@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/my_current_user' => 'users#my_current_user'
+  match 'users/:id' => 'users#update_user', via: [:patch]
+
 end
