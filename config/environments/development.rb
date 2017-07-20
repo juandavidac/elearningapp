@@ -47,7 +47,20 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_view.raise_on_missing_translations = true
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.perform_deliveries = true
+  config.active_record.raise_in_transactional_callbacks = true
 
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :domain               => "gmail.com",
+   :user_name            => ENV['USER'],
+   :password             => ENV['PASS'],
+   :authentication       => :login,
+   :enable_starttls_auto => true
+  }
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker

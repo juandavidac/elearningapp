@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621042606) do
+ActiveRecord::Schema.define(version: 20170621043316) do
+
+  create_table "authentication_tokens", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.datetime "last_used_at"
+    t.string   "ip_address"
+    t.string   "user_agent"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.boolean  "admin",                  default: false,                                                                           null: false
