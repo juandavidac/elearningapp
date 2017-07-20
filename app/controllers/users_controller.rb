@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :except => [:reset_passwrod]
+  before_action :authenticate_user!, :except => [:reset_password]
 
   def all_users
     @users = User.all.count
@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     else
       render json: @user.errors, status: :unprocessable_entity
     end
+  end
+
+  def reset_password
+    @user = User.find_by_email(params[:user_email])
+    @user.send_reset_password_instructions
+    render json: @user
   end
 
   private
