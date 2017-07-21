@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :schools
 
-  resources :courses
+  resources :courses do
+    resources :chapters
+  end
 
   get '/my_current_user' => 'users#my_current_user'
   match 'users/:id' => 'users#update_user', via: [:patch]
