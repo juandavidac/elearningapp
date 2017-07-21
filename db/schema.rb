@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621043316) do
+ActiveRecord::Schema.define(version: 20170721033504) do
 
   create_table "authentication_tokens", force: :cascade do |t|
     t.string   "body"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20170621043316) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_authentication_tokens_on_user_id"
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "thumbnail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
