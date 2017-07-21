@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :token_authenticatable
 
   has_many :authentication_tokens
+  has_many :progresses
 end
