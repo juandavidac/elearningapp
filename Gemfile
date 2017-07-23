@@ -57,3 +57,5 @@ gem 'devise'
 gem 'tiddle'
 
 gem 'dotenv-rails', groups: [:development]
+
+gem 'stripe'
