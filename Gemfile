@@ -59,3 +59,7 @@ gem 'tiddle'
 gem 'dotenv-rails', groups: [:development]
 
 gem 'stripe'
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+gem 'carrierwave-aws'
