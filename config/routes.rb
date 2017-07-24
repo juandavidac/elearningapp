@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete "chapters/mark_as_incomplete" => "progresses#delete"
 
   #Users
+  get '/subscribers' => 'users#subscribers'
   get '/my_current_user' => 'users#my_current_user'
   get '/all_users' => 'users#all_users'
   match 'users/:id' => 'users#update_user', via: [:patch]
