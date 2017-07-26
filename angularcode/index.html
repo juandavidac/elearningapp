@@ -5,6 +5,31 @@
     <title>E-learning platform</title>
   </head>
   <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="mainCtrl">
+    <div class="container">
+        <!-- school name -->
+        <div class="navbar-header navbar-left">
+            <a ui-sref="dashboard" class="navbar-brand">{{ school.name }}</a>
+        </div>
+        <!-- buttons -->
+        <ul class="nav navbar-nav navbar-right">
+            <!-- only for non-logged users -->
+            <li><a ui-sref="login" ng-if="current_user == undefined">Login</a></li>
+            <li><a ui-sref="sign_up" ng-if="current_user == undefined">Sign up</a></li>
+            <!-- only for school admin -->
+            <li><a ui-sref="admin" ng-if="current_user.admin == true">Admin</a></li>
+            <!-- only for logged users -->
+            <li role="presentation" class="dropdown" ng-if="current_user != undefined">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="settings">Settings</a></li>
+                    <li><a ng-show="current_user.admin == false" ui-sref="subscriptions">Subscriptions</a></li>
+                </ul>
+            </li>
+            <li><a style="cursor: pointer;" ng-click="logout()" ng-if="current_user != undefined">Logout</a></li>
+        </ul>
+    </div>
+    </nav>
     <div ui-view></div>
     <!-- AngularJS -->
     <script type="text/javascript" src="https://code.angularjs.org/1.4.8/angular.min.js"></script>
